@@ -6,8 +6,8 @@ services:
     build: .
     ports:
       - "8888:8888"
-    volumes:
-      - /home/maesh/projects/learn-pytorch/notebooks/:/app/notebooks
+    volumes:  # change this to the absolute path of your notebooks folder
+      - /home/maesh/projects/wsl2-gpu-docker-template/notebooks/:/app/notebooks
     deploy:
       resources:
         reservations:
