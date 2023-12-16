@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  pytorch-jupyter:
+    image: pytorch-gpu
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      - /home/maesh/projects/learn-pytorch/notebooks/:/app/notebooks
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    command: ["jupyter-lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--NotebookApp.token=''"]
